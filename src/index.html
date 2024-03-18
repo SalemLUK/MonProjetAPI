@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil interactive</title>
+</head>
+<body>
+    <h1>Recherche de recettes</h1>
+    <form action="/rechercheRecette" method="GET">
+        <label for="recipe">Entrez le nom de la recette que vous recherchez :</label><br>
+        <input type="text" id="recipe" name="search"><br>
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <h1 class="ma-classe">Recherche de Nutriment</h1>
+    <form action="/rechercheNutriment" method="POST" class="form-nutriment">
+        <label for="nutrimentSearch">Entrez le nom du nutriment que vous recherchez :</label><br>
+        <input type="text" id="nutrimentSearch" name="nutriment"><br>
+        <button type="submit" onclick="onResize()">Rechercher</button>
+    </form>
+
+    <!-- Assurez-vous que le script est inclus après la définition des éléments -->
+    <script src="/script.js"></script>
+    <script>
+        function onResize() {
+            const nutrimentElement = document.getElementById('nutrimentSearch');
+            if (nutrimentElement) {
+                nutrimentElement.classList.add('ma-classe'); // Ajoute 'ma-classe' à l'élément
+            } else {
+                console.log('Nutriment element not found');
+            }
+        }
+
+        // Utilisez DOMContentLoaded pour s'assurer que le DOM est entièrement chargé
+        document.addEventListener('DOMContentLoaded', () => {
+            // Appel de la fonction onResize après le chargement du DOM
+            onResize();
+        });
+    </script>
+</body>
+</html>
